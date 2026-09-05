@@ -5,29 +5,20 @@ type Node struct{
 	next *Node
 }
 type LinkedList struct{
-	Node
+	start *Node
 }
 func (l *LinkedList) insertAtStart(d int){
-	l.Node = Node{
+	l.start = &Node{
 		data: d,
-		next: &l.Node,
+		next: l.start,
 	}
+	
+	fmt.Println("insertAtStart() -> newStart=",l) 
 }
-
 func (l *LinkedList) PrintList(){
-	if l == nil{
-		fmt.Println("[]");
+	for i := l.start; i != nil; i = i.next{
+		fmt.Print(fmt.Sprintf("%d,", i.data))
 	}
-	fmt.Print(fmt.Sprintf("[%d,", l.Node.data))
-	
-	for i := l.Node.next; i != nil; i = i.next{
-		fmt.Print(fmt.Sprintf("%d,", l.Node.data))
-	}
-	
-	fmt.Print(fmt.Sprintf("]\n"))
-}
-func (l *LinkedList) insert(d int){
-	
 }
 func main(){
 	
