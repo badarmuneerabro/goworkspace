@@ -68,6 +68,48 @@ func (l *LinkedList) length() int{
 	
 	return length
 }
+
+func (l *LinkedList) deleteAtStart(){
+	if l.start == nil {
+		return
+	}
+	
+	l.start = l.start.next
+}
+
+func (l *LinkedList) deleteAtEnd() {
+	if l.start == nil {
+		return
+	}else if l.start.next == nil {
+		l.deleteAtStart()
+		return
+	}
+	
+	for i := l.start; i.next != nil; i = i.next {
+		if i.next.next == nil {
+			i.next = nil
+			return
+		}
+	}
+}
+
+func (l *LinkedList) deleteAt(index int){
+	if l.start == nil {
+		return
+	}else if index <= 0 {
+		l.deleteAtStart()
+		return
+	}
+	pos := 0
+	for i := l.start; i.next != nil; i = i.next{
+		if pos == (index - 1) {
+			i.next = i.next.next
+			return
+		}
+		pos++
+	}
+}
+
 func (l *LinkedList) PrintList(){
 	for i := l.start; i != nil; i = i.next{
 		fmt.Print(fmt.Sprintf("%d,", i.data))
@@ -89,4 +131,13 @@ func main(){
 	
 	fmt.Println(list.find(10))
 	fmt.Println("length=", list.length())
+	
+	list.deleteAtStart()
+	list.PrintList()
+	
+	list.deleteAtEnd()
+	list.deleteAtEnd()
+	list.deleteAtEnd()
+	list.deleteAt(2)
+	list.PrintList()
 }
