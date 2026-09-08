@@ -28,5 +28,5 @@ func main(){
 	var dis2 = DoubleIntSlice{1, 2, 3}
 	
 	fmt.Println(DoublerCompare(&di, &di2)) // false because comparing addresses of different pointers.
-	fmt.Println(DoubleCompare(&di, dis)) // Why this is false? Aren't both Doubler?
+	fmt.Println(DoubleCompare(&di, dis)) // Why this 
 }
