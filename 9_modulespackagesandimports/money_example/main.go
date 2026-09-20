@@ -5,6 +5,8 @@ import(
 	"os"
 	"log"
 	
+	"github.com/badarmuneerabro/goworkspace/blob/master/9_modulespackagesandimports/money_example/greetings"
+	
 	"github.com/learning-go-book-2e/formatter"
 	"github.com/shopspring/decimal"
 )
@@ -30,4 +32,10 @@ func main(){
 	total := amount.Add(amount.Mul(percent)).Round(2)
 	
 	fmt.Println(formatter.Space(80, os.Args[1], os.Args[2], total.StringFixed(2)))
+	
+	p := greetings.Person{
+		Name: "Badar",
+	}
+	p.Greet("Wahid")
+	
 }
